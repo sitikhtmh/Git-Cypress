@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('My First Test', () => {
-  it.only('clicking "get" navigate to a new url', () => {
+  it('clicking "get" navigate to a new url', () => {
     cy.visit('https://example.cypress.io')
     cy.get('h1').contains('Kitchen Sink')
     cy.contains('get').click();

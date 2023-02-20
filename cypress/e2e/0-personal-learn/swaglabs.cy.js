@@ -11,16 +11,22 @@ describe('Working with inputs', () => {
         const username = user.username
         const password = user.password
   
-        cy.get('#user-name').clear()
-        cy.get('#user-name').type(username)
-   
-        cy.get('input[name="password').clear()
-        cy.get('input[name="password').type(password)
-  
-        cy.get('input[name="submit"]').click()
-  
-        cy.get('.alert-error').should('contain.text', 'Login and/or password are wrong.')
+        cy.fixture("user").then(user => {
+
+          const username = user.username
+          const password = user.password
+    
+          cy.get('#user-name').clear()
+          cy.get('#user-name').type(username)
+     
+          cy.get('input[name="password').clear()
+          cy.get('input[name="password').type(password)
+    
+          cy.get('input[name="submit"]').click()
+    
+          cy.get('.alert-error').should('contain.text', 'Login and/or password are wrong.')
+          
         })
-       
-    });
-  });
+      })
+    })
+  })

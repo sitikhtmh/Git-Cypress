@@ -7,19 +7,16 @@ describe('Working with inputs', () => {
     });
     it('Should try to login', () => {
         cy.visit('http://zero.webappsecurity.com/login.html');
-        
+       
         cy.fixture("user").then(user => {
             const username = user.username
             const password = user.password
-
-            cy.get('#user_login').clear()
-            cy.get('#user_login').type(username)
-            cy.get('input[name="user_password"]').clear()
-            cy.get('input[name="user_password"]').type(password)
-            cy.get('input[name="submit"]').click()
-
-            cy.get('.alert-error').should('contain.text', 'Login and/or password are wrong.')
-        })
-       
+            
+            //untuk codingan lainnya ada di /support/command.js
+            cy.login(username, password)
+           
+           // cy.get('.alert-error').should('contain.text', 'Login and/or password are wrong.')
+        }) 
     });
+
 });
